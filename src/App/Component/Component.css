@@ -1,0 +1,26 @@
+.image-container{
+    display: flex;
+   
+}
+.main-container{
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 165px;
+    margin-left: 256px;
+    margin-right: 261px;
+}
+.main-container>div {
+   
+    flex: 0 1;
+    margin: 0.5vh 0.5vw;
+}
+.ui.cards>.card>.image:not(.ui)>img {
+    border: none;
+    width: 290px;
+    height: 300px;
+}
+.product-name{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
