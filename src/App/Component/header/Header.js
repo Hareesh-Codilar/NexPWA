@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MainMenuHeader from "../mainMenuHeader/MainMenuHeader";
 import NavBar from '../NavBar/NavBar'
 
 class Header extends Component {
@@ -20,6 +21,7 @@ class Header extends Component {
             </div>
           </div>
           <NavBar />
+          <MainMenuHeader />
         </header>
     );
   }

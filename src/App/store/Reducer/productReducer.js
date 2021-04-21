@@ -1,4 +1,5 @@
-import { SET_PRODUCTS } from '../contants/action-type'
+import { SET_PRODUCTS } from "../actions/contants/action-type";
+
 const initialState ={
     products:[]
     

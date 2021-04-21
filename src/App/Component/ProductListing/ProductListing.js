@@ -17,6 +17,7 @@ class ProductListing extends Component {
    * fetchProducts() used to fetch the api
    */
   componentDidMount() {
+    console.log("lable");
     console.log("DId mount", this.props.fetchProducts);
     this.props.fetchProducts();
     this.setState({productData: this.props.products});

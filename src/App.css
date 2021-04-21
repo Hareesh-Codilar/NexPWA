@@ -79,3 +79,38 @@ background-color:#f3f3f3
   margin-left: 5px;
   border: none;
 }
+.mainMenu-Header{
+  
+  display: flex;
+  align-items: center;
+  padding: 5px 12px;
+  z-index: 20;
+  max-width:1400px;
+  margin: auto;
+  height: 30px;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.MegaMenuComponent .Container ul.MenuList li.ListItem span {
+color: #222;
+font-size: 15px;
+display: inline-block;
+text-decoration: none;
+}
+ul.Menulist {
+display: flex;
+text-decoration: none;
+list-style-type: none;
+margin-top: 0;
+margin-bottom: 0;
+}
+span.listspan {
+text-decoration: none;
+margin-right: 25px;
+font-size: 15px;
+  color: #222;
+}
+span.listspan:hover{
+border-bottom: 2px solid #f3ce29;
+}
