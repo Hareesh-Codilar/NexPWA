@@ -1,14 +1,17 @@
 import { MENU_PRODUCTS } from "./contants/action-type";
 
+/*
+ *@fetchMenuProducts get the data from api
+ */
 export const fetchMenuProducts = () => (dispatch) => {
-    console.log("hello ->>>>>");
-    fetch("https://nexpwa.codilar.in/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: `
+  console.log("hello ->>>>>");
+  fetch("https://nexpwa.codilar.in/graphql", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `
         query {
           products(filter: { category_id: {eq: "24"}}){
              
@@ -41,21 +44,21 @@ export const fetchMenuProducts = () => (dispatch) => {
            }
          }
         `,
-        variables: {
-          now: new Date().toISOString(),
-        },
-      }),
-    }) 
-      .then((res) => res.json())
-      .then((response) => {
-        console.log("result ->>>>>", response);
-        let datas = {
-          productDatas: response.data,
-        };
-        return dispatch({
-          type: MENU_PRODUCTS,
-          payload: datas,
-        });
-      })
-      .catch(console.error);
-    };
+      variables: {
+        now: new Date().toISOString(),
+      },
+    }),
+  })
+    .then((res) => res.json())
+    .then((response) => {
+      console.log("result ->>>>>", response);
+      let datas = {
+        productDatas: response.data,
+      };
+      return dispatch({
+        type: MENU_PRODUCTS,
+        payload: datas,
+      });
+    })
+    .catch(console.error);
+};
