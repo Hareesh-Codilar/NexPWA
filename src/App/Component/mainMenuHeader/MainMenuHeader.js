@@ -1,29 +1,45 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { fetchMenuProducts } from "../../store/actions/MenuAction";
+import { withRouter } from "react-router-dom";
 
 class MainMenuHeader extends Component {
+  constructor(props) {
+    super(props);
+    this.state={menuProductsData: []}
+    this.menuClickhandler = this.menuClickhandler.bind(this);
+    
+  }
   componentDidMount() {
     console.log("lable");
     console.log("DId mount", this.props.menuProducts);
-    // this.setState({productData: this.props.products});
-    this.menuClickhandler = this.menuClickhandler.bind(this);
+    this.props.fetchMenuProducts();
+    this.setState({menuProductsData:this.props.menuProducts});
   }
-  menuClickhandler (e) {
-      console.log("handler id", e);
+  componentDidUpdate(prevProps) {
+    if(prevProps.menuProducts != this.props.menuProducts){
+      this.setState({menuProductsData: this.props.menuProducts});
+      console.log("DId update", this.props.menuProducts);
+      }
+  }
+  menuClickhandler (id) {
+      console.log("handler id", id);
+      // this.props.history.push('/page');
+      this.props.history.push(`/ProductListing/:${id}`);
   }
 
   render() {
-    const { menuProducts } = this.props;
-    console.log("Menu data--->>>", menuProducts);
+    const { menuProductsData } = this.state;
+    console.log("Menu data--->>>", menuProductsData);
     return (
       <div className="mainMenu-Header">
-        {menuProducts ? (
+        {menuProductsData.menuProducts ? (
           <>
-              {console.log("identifier", menuProducts.menuProducts.categoryList)}
-            {menuProducts.menuProducts.categoryList && menuProducts.menuProducts.categoryList.length > 0 ? 
+              
+            {menuProductsData.menuProducts.categoryList && menuProductsData.menuProducts.categoryList.length > 0 ? 
               <>
               <ul className="MenuList">
-                {menuProducts.menuProducts.categoryList[0].children.sort((a, b) => a.position - b.position).map((value, index) => {
+                {menuProductsData.menuProducts.categoryList[0].children.sort((a, b) => a.position - b.position).map((value, index) => {
                   return (
                   <li className="ListItem Level-2 Level-2-0 arrow" onClick={() => this.menuClickhandler(value.id)}>
                     
@@ -499,5 +515,10 @@ const mapStateToProps = (state) => {
     menuProducts: state.menuProducts,
   };
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchMenuProducts: () => dispatch(fetchMenuProducts(dispatch)),
+  };
+};
 
-export default connect(mapStateToProps)(MainMenuHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps) (MainMenuHeader));

@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import "../Component.css";
 import ProductComponents from "../ProductComponent/ProductComponent";
 import { fetchProducts } from "../../store/actions/ProductionAction";
-import { fetchMenuProducts } from "../../store/actions/MenuAction";
-import MainMenuHeader from "../mainMenuHeader/MainMenuHeader";
 
 /*
  * @Class ProductListing
@@ -12,39 +10,42 @@ import MainMenuHeader from "../mainMenuHeader/MainMenuHeader";
 class ProductListing extends Component {
   constructor(props) {
     super(props);
-    this.state={productData:[],menuProducts: []}
-    
+    this.state = { productData: [] };
   }
 
   /*
    * fetchProducts() used to fetch the api
    */
   componentDidMount() {
-    console.log("lable");
+    console.log("lable", this.props.match.params.catId);
+    if (this.props.match.params.catId) {
+      console.log("checking data", this.props.match.params.catId);
+      let catId = this.props.match.params.catId;
+      this.props.fetchProducts(catId);
+    } else {
+      console.log("no data ");
+    }
+    // this.props.fetchProducts(this.props.match.params.catId);
     console.log("DId mount", this.props.fetchProducts);
-    this.props.fetchProducts();
-    this.props.fetchMenuProducts();
+    // this.props.fetchProducts();
 
-    this.setState({productData: this.props.products, menuProducts:this.props.menuProducts});
-
+    this.setState({ productData: this.props.products });
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.products != this.props.products){
-    this.setState({productData: this.props.products});
+    if (prevProps.products != this.props.products) {
+      this.setState({ productData: this.props.products });
     }
-    if(prevProps.menuProducts != this.props.menuProducts){
-      this.setState({menuProducts: this.props.menuProducts});
-      }
     console.log("Both menu and products", this.state);
   }
 
   render() {
     const { products } = this.props;
-    return (<>
-      <div className="image-container">
-        <ProductComponents products={this.state.productData} />
-      </div>
+    return (
+      <>
+        <div className="image-container">
+          <ProductComponents products={this.state.productData} />
+        </div>
         {/* <MainMenuHeader  /> */}
       </>
     );
@@ -54,14 +55,26 @@ class ProductListing extends Component {
 const mapStateToProps = (state) => {
   return {
     products: state.allPoducts,
-    menuProducts: state.menuProducts,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchProducts: () => dispatch(fetchProducts(dispatch)),
-    fetchMenuProducts: () => dispatch(fetchMenuProducts(dispatch)),
+    fetchProducts: (catId) => {
+      dispatch(fetchProducts(catId));
+    },
   };
 };
+// function mapDispatchToProps(dispatch) {
+//   return {
+//       doStuff: (value) => dispatch(doStuffAction(value))
+//   };
+// }
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     nameofActionCreator: (args) => {
+//       dispatch(nameOfActionCreator(args))
+//     }
+//   }
+// }
 export default connect(mapStateToProps, mapDispatchToProps)(ProductListing);

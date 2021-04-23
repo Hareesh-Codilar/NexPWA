@@ -1,7 +1,7 @@
 import { SET_PRODUCTS } from "./contants/action-type";
 
-export const fetchProducts = () => (dispatch) => {
-  console.log("hello ->>>>>");
+export const fetchProducts = (catId) => (dispatch) => {
+  console.log("hello ->>>>>", catId);
   fetch("https://nexpwa.codilar.in/graphql", {
     method: "POST",
     headers: {
@@ -10,7 +10,7 @@ export const fetchProducts = () => (dispatch) => {
     body: JSON.stringify({
       query: `
       query {
-        products(filter: { category_id: {eq: "24"}}){
+        products(filter: { category_id: {eq: "${catId}"}}){
            
            items {
              name
