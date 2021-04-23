@@ -8,8 +8,8 @@ export const menuReducer = (state=initialState, action) => {
     
 switch (action.type) {
     case MENU_PRODUCTS:
-        let { productDatas } = action.payload;
-        return {...state, menuProducts: productDatas}
+        // let { pay } = action.payload;
+        return {...state, menuProducts: action.payload}
 
 
     default:

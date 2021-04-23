@@ -48,13 +48,13 @@ export const fetchProducts = () => (dispatch) => {
   }) 
     .then((res) => res.json())
     .then((response) => {
-      console.log("result ->>>>>", response);
+      console.log("result product ->>>>>", response);
       let datas = {
         productDatas: response.data,
       };
       return dispatch({
         type: SET_PRODUCTS,
-        payload: datas,
+        payload: response.data,
       });
     })
     .catch(console.error);

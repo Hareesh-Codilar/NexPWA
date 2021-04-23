@@ -8,8 +8,8 @@ export const productReducer = (state=initialState, action) => {
     
 switch (action.type) {
     case SET_PRODUCTS:
-        let { productDatas } = action.payload;
-        return {...state, products: productDatas}
+        // let { productDatas } = action.payload;
+        return {...state, products: action.payload  }
 
 
     default:

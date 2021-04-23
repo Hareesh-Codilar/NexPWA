@@ -92,18 +92,17 @@ background-color:#f3f3f3
   justify-content: center;
   margin-bottom: 10px;
 }
-.MegaMenuComponent .Container ul.MenuList li.ListItem span {
+.MegaMenuComponent .Container ul.MenuList li.ListItem a {
 color: #222;
 font-size: 15px;
 display: inline-block;
 text-decoration: none;
 }
-ul.Menulist {
-display: flex;
-text-decoration: none;
-list-style-type: none;
-margin-top: 0;
-margin-bottom: 0;
+ul.MenuList {
+  display: flex;
+  list-style-type: none;
+  text-align: center;
+  justify-content: center;
 }
 span.listspan {
 text-decoration: none;
@@ -111,6 +110,11 @@ margin-right: 25px;
 font-size: 15px;
   color: #222;
 }
-span.listspan:hover{
+a span.span-2 {
+  margin-right: 15px;
+  margin-left: 15px;
+  justify-content: center;
+}
+a span.span-2:hover{
 border-bottom: 2px solid #f3ce29;
 }

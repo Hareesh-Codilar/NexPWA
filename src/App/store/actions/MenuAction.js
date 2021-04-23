@@ -12,36 +12,34 @@ export const fetchMenuProducts = () => (dispatch) => {
     },
     body: JSON.stringify({
       query: `
-        query {
-          products(filter: { category_id: {eq: "24"}}){
-             
-             items {
-               name
-               sku
-               id
-               image {
-                 disabled
-                 label
-                 path
-                 position
-                 url
-               }
-               price{
-                regularPrice{
-                  amount{
-                    value
-                    currency
-                  }
-                }
-              }
-               attributes{
-                 attribute_id
-                 attribute_code
-                 attribute_label
-               }
-               
-             }
-           }
+      query {
+        categoryList(filters: {ids:{eq:"23"}}){
+      canonical_url
+      children{
+        name
+        id
+        position
+        level
+       children{
+        id
+        name
+        position
+        level
+        children{
+          name
+          id
+          position
+          level
+          children{
+            name
+            id
+            position
+            level
+          }
+        }
+      }
+      }
+    }
          }
         `,
       variables: {
@@ -51,13 +49,10 @@ export const fetchMenuProducts = () => (dispatch) => {
   })
     .then((res) => res.json())
     .then((response) => {
-      console.log("result ->>>>>", response);
-      let datas = {
-        productDatas: response.data,
-      };
+      console.log("result catagori ->>>>>", response);
       return dispatch({
         type: MENU_PRODUCTS,
-        payload: datas,
+        payload: response.data,
       });
     })
     .catch(console.error);
