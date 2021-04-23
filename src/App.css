@@ -110,11 +110,12 @@ margin-right: 25px;
 font-size: 15px;
   color: #222;
 }
-a span.span-2 {
+li span.span-2 {
   margin-right: 15px;
   margin-left: 15px;
   justify-content: center;
 }
-a span.span-2:hover{
+ li span.span-2:hover{
 border-bottom: 2px solid #f3ce29;
+cursor: pointer;
 }

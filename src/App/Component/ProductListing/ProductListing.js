@@ -13,6 +13,7 @@ class ProductListing extends Component {
   constructor(props) {
     super(props);
     this.state={productData:[],menuProducts: []}
+    
   }
 
   /*
@@ -44,7 +45,7 @@ class ProductListing extends Component {
       <div className="image-container">
         <ProductComponents products={this.state.productData} />
       </div>
-        <MainMenuHeader  />
+        {/* <MainMenuHeader  /> */}
       </>
     );
   }

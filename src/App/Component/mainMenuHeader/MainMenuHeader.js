@@ -6,87 +6,41 @@ class MainMenuHeader extends Component {
     console.log("lable");
     console.log("DId mount", this.props.menuProducts);
     // this.setState({productData: this.props.products});
+    this.menuClickhandler = this.menuClickhandler.bind(this);
   }
+  menuClickhandler (e) {
+      console.log("handler id", e);
+  }
+
   render() {
     const { menuProducts } = this.props;
-    console.log("--->>>", menuProducts);
+    console.log("Menu data--->>>", menuProducts);
     return (
       <div className="mainMenu-Header">
         {menuProducts ? (
           <>
-            {menuProducts.catagoryList &&
-            menuProducts.catagoryList[1].children.length > 0 ? (
+              {console.log("identifier", menuProducts.menuProducts.categoryList)}
+            {menuProducts.menuProducts.categoryList && menuProducts.menuProducts.categoryList.length > 0 ? 
               <>
-                {menuProducts.catagoryList[1].children.map((value, index) => (
-                  <div>{value.name}</div>
-                ))}
+              <ul className="MenuList">
+                {menuProducts.menuProducts.categoryList[0].children.sort((a, b) => a.position - b.position).map((value, index) => {
+                  return (
+                  <li className="ListItem Level-2 Level-2-0 arrow" onClick={() => this.menuClickhandler(value.id)}>
+                    
+                      <span className="span-2"> {value.name}</span>
+                   
+                  </li>);
+                })}
+                </ul>
               </>
-            ) : (
+             : 
               <> no data</>
-            )}
+            }
           </>
         ) : (
           <> loading...</>
         )}
-        {/* <ul className="Menulist">
-          <li
-            className="ListItem level-2"
-            onClick={this.fetchProductByCategory}
-          >
-            <span className="listspan">Men</span>
-          </li>
-          <li
-            className="ListItem level-2"
-            onClick={this.fetchProductByCategory}
-          >
-            <span className="listspan">Women</span>
-          </li>
-          <li
-            className="ListItem level-2"
-            onClick={this.fetchProductByCategory}
-          >
-            <span className="listspan">Accessories</span>
-          </li>
-          <li
-            className="ListItem level-2"
-            onClick={this.fetchProductByCategory}
-          >
-            <span className="listspan">Footwear</span>
-          </li>
-          <li
-            className="ListItem level-2"
-            onClick={this.fetchProductByCategory}
-          >
-            <span className="listspan">Trending</span>
-          </li>
-        </ul> */}
-        <ul className="MenuList">
-          <li className="ListItem Level-2 Level-2-0 arrow">
-            <a className="" href="/men">
-              <span className="span-2"> Men</span>
-            </a>
-          </li>
-          <li className="ListItem Level-2 Level-2-1 arrow">
-            <a className="" href="/women">
-              <span className="span-2"> Women</span>
-            </a>
-          </li>
-          <li className="ListItem Level-2 Level-2-2 arrow">
-            <a className="" href="/accessories">
-              <span className="span-2"> Accessories</span>
-            </a>
-          </li>
-          <li className="ListItem Level-2 Level-2-3 arrow">
-            <a className="" href="/footwear">
-              <span className="span-2"> Footwear</span>
-            </a>
-          </li>
-          <li className="ListItem Level-2 Level-2-4">
-            <a className="" href="/trending">
-              <span className="span-2"> Trending</span>
-            </a>
-          </li>
-        </ul>
+       
         <div className="MegaMenuSubLevelContainer">
           <div className="MenuSubDiv show-menu-2 show-menu-2-0">
             <div className="SecondLevel HasThreeLevels">
