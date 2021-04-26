@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "../mainMenuHeader/mainMenuHeader.css";
+// import "../mainMenuHeader/mainMenuHeader.css"
 import { connect } from "react-redux";
 import { fetchMenuProducts } from "../../store/actions/MenuAction";
 import { withRouter } from "react-router-dom";
@@ -46,7 +48,7 @@ class MainMenuHeader extends Component {
               <ul className="MenuList">
                 {menuProductsData.menuProducts.categoryList[0].children.sort((a, b) => a.position - b.position).map((value, index) => {
                   return (
-                  <li className="ListItem Level-2 Level-2-0 arrow" onClick={() => this.menuClickhandler(value.id)}>
+                  <li className="ListItem Level-2 Level-2-0 arrow"  onClick={() => this.menuClickhandler(value.id)}>
                     
                       <span className="span-2"> {value.name}</span>
                    
@@ -55,13 +57,13 @@ class MainMenuHeader extends Component {
                 </ul>
               </>
              : 
-              <> no data</>
+              <> loading...</>
             }
           </>
         ) : (
-          <> loading...</>
+          <> No Data</>
         )}
-       
+       <div className="Container">
         <div className="MegaMenuSubLevelContainer">
           <div className="MenuSubDiv show-menu-2 show-menu-2-0">
             <div className="SecondLevel HasThreeLevels">
@@ -73,7 +75,7 @@ class MainMenuHeader extends Component {
                         className="MenuThirdLevelSubList"
                         style={{ flexBasis: "25%" }}
                       >
-                        {/* <ul>
+                        <ul>
                           <li className="ListItem Level-3 Level-3-0 main-menu-column active">
                             <a className="parent" href="/men/t-shirts">
                               <span className="span-3"> T Shirts</span>
@@ -130,7 +132,7 @@ class MainMenuHeader extends Component {
                               <span className="span-4"> Waistcoat Kurtas</span>
                             </a>
                           </li>
-                        </ul> */}
+                        </ul>
                       </div>
                       <div
                         className="MenuThirdLevelSubList"
@@ -510,6 +512,7 @@ class MainMenuHeader extends Component {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     );

@@ -119,3 +119,55 @@ li span.span-2 {
 border-bottom: 2px solid #f3ce29;
 cursor: pointer;
 }
+.span-2 .MegaMenuSubLevelContainer {
+  display: none;
+}
+
+#span-2:hover .MegaMenuSubLevelContainer {
+  display: block;
+}
+/* .dropdown:hover>.dropdown-menu {
+  display: block;
+} */
+
+/* .MegaMenuSubLevelContainer {
+  display: block;
+  position: absolute;
+  top: 20px;
+  margin-left: 150px;
+  
+  width:1120px;
+ 
+  background-color: #fff;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  box-shadow: 0 4px 20px rgb(34 34 34 / 15%);
+  min-height: 300px;
+}
+.MegaMenuComponent .Container .MegaMenuSubLevelContainer .MenuSubDiv .SecondLevel {
+  display: flex;
+  background-color: rgba(245,245,246,0.4);
+ 
+  
+}
+.MegaMenuComponent .Container .MegaMenuSubLevelContainer .MenuSubDiv .SecondLevel.HasThreeLevels .FinalLevelContainer {
+  width: 100%;
+}
+.MegaMenuComponent .Container .MegaMenuSubLevelContainer .MenuSubDiv .SecondLevel.HasThreeLevels .FinalLevelContainer .MenuThirdLevel {
+  display: block;
+}
+.MegaMenuComponent .Container .MegaMenuSubLevelContainer .MenuSubDiv .SecondLevel .FinalLevelContainer .MenuThirdLevel .ThirdLevel {
+  padding: 5px 15px;
+}
+.MegaMenuComponent .Container .MegaMenuSubLevelContainer .MenuSubDiv .SecondLevel .FinalLevelContainer .MenuThirdLevel .ThirdLevel .MenuThirdLevelList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.MegaMenuComponent .Container .MegaMenuSubLevelContainer .MenuSubDiv .SecondLevel .FinalLevelContainer .MenuThirdLevel .ThirdLevel .MenuThirdLevelList .MenuThirdLevelSubList {
+  padding: 0 25px;
+   height: 300px;
+  flex-basis: 50%;
+}
+.MegaMenu-Header .Container .MegaMenuSubLevelContainer .MenuSubDiv .SecondLevel .FinalLevelContainer .MenuThirdLevel .ThirdLevel .MenuThirdLevelList .MenuThirdLevelSubList li.main-menu-column a span {
+  color: #ffd500;
+} */
