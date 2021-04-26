@@ -18,14 +18,14 @@ class ProductListing extends Component {
    */
   componentDidMount() {
     console.log("lable", this.props.match.params.catId);
-    if (this.props.match.params.catId) {
-      console.log("checking data", this.props.match.params.catId);
-      let catId = this.props.match.params.catId;
-      this.props.fetchProducts(catId);
-    } else {
-      console.log("no data ");
-    }
-    console.log("DId mount", this.props.fetchProducts);
+    // if (this.props.match.params.catId) {
+    //   console.log("checking data", this.props.match.params.catId);
+    //   let catId = this.props.match.params.catId;
+    //   this.props.fetchProducts(catId);
+    // } else {
+    //   console.log("no data ");
+    // }
+    // console.log("DId mount", this.props.fetchProducts);
 
     this.setState({ productData: this.props.products });
   }
@@ -61,13 +61,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchProducts: (catId) => {
-      dispatch(fetchProducts(catId));
-    },
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     fetchProducts: (catId) => {
+//       dispatch(fetchProducts(catId));
+//     },
+//   };
+// };
 // const mapDispatchToProps = dispatch => ({
 //   fetchProducts: catId => {
 //       dispatch(fetchProducts({ catId: catId }));
@@ -85,4 +85,4 @@ const mapDispatchToProps = (dispatch) => {
 //     }
 //   }
 // }
-export default connect(mapStateToProps, mapDispatchToProps)(ProductListing);
+export default connect(mapStateToProps)(ProductListing);

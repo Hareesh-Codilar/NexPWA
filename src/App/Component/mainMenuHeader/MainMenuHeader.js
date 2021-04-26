@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchMenuProducts } from "../../store/actions/MenuAction";
 import { withRouter } from "react-router-dom";
+import { fetchProducts } from "../../store/actions/ProductionAction";
 
 class MainMenuHeader extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class MainMenuHeader extends Component {
   componentDidMount() {
     console.log("lable");
     console.log("DId mount", this.props.menuProducts);
-    this.props.fetchMenuProducts();
+    this.props.fetchMenuProducts("23");
     this.setState({menuProductsData:this.props.menuProducts});
     
     // this.setState({productData: this.props.products});
@@ -27,6 +28,8 @@ class MainMenuHeader extends Component {
   menuClickhandler (id) {
       console.log("handler id", id);
       // this.props.history.push('/page');
+      // let catId = this.props.match.params.catId;
+      this.props.fetchProducts(id);
       this.props.history.push(`/ProductListing/${id}`);
   }
 
@@ -519,7 +522,10 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMenuProducts: () => dispatch(fetchMenuProducts(dispatch)),
+    fetchMenuProducts: (id) => dispatch(fetchMenuProducts(id)),
+    fetchProducts: (catId) => {
+      dispatch(fetchProducts(catId));
+    },
   };
 };
 

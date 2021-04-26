@@ -3,7 +3,7 @@ import { MENU_PRODUCTS } from "./contants/action-type";
 /*
  *@fetchMenuProducts get the data from api
  */
-export const fetchMenuProducts = () => (dispatch) => {
+export const fetchMenuProducts = (id) => (dispatch) => {
   console.log("hello ->>>>>");
   fetch("https://nexpwa.codilar.in/graphql", {
     method: "POST",
@@ -13,7 +13,7 @@ export const fetchMenuProducts = () => (dispatch) => {
     body: JSON.stringify({
       query: `
       query {
-        categoryList(filters: {ids:{eq:"23"}}){
+        categoryList(filters: {ids:{eq:"${id}"}}){
       canonical_url
       children{
         name
