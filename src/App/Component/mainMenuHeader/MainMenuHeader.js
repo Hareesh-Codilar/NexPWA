@@ -15,6 +15,8 @@ class MainMenuHeader extends Component {
     console.log("DId mount", this.props.menuProducts);
     this.props.fetchMenuProducts();
     this.setState({menuProductsData:this.props.menuProducts});
+    
+    // this.setState({productData: this.props.products});
   }
   componentDidUpdate(prevProps) {
     if(prevProps.menuProducts != this.props.menuProducts){
@@ -25,7 +27,7 @@ class MainMenuHeader extends Component {
   menuClickhandler (id) {
       console.log("handler id", id);
       // this.props.history.push('/page');
-      this.props.history.push(`/ProductListing/:${id}`);
+      this.props.history.push(`/ProductListing/${id}`);
   }
 
   render() {

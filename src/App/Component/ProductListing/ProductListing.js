@@ -25,17 +25,20 @@ class ProductListing extends Component {
     } else {
       console.log("no data ");
     }
-    // this.props.fetchProducts(this.props.match.params.catId);
     console.log("DId mount", this.props.fetchProducts);
-    // this.props.fetchProducts();
 
     this.setState({ productData: this.props.products });
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.products != this.props.products) {
+    if (prevProps.products !== this.props.products) {
       this.setState({ productData: this.props.products });
+      // this.props.fetchProducts();
     }
+    // if (this.props.match.params.catId !== prevProps.this.props.match.params.catId)
+    // {
+    //   this.fetchProducts()
+    // }
     console.log("Both menu and products", this.state);
   }
 
@@ -54,7 +57,7 @@ class ProductListing extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    products: state.allPoducts,
+    products:{ ...state.allPoducts},
   };
 };
 
@@ -65,6 +68,11 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
+// const mapDispatchToProps = dispatch => ({
+//   fetchProducts: catId => {
+//       dispatch(fetchProducts({ catId: catId }));
+//   }
+//  });
 // function mapDispatchToProps(dispatch) {
 //   return {
 //       doStuff: (value) => dispatch(doStuffAction(value))

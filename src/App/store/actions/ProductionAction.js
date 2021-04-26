@@ -1,7 +1,7 @@
 import { SET_PRODUCTS } from "./contants/action-type";
 
 export const fetchProducts = (catId) => (dispatch) => {
-  console.log("hello ->>>>>", catId);
+  console.log("hello fetchpro ->>>>>", catId);
   fetch("https://nexpwa.codilar.in/graphql", {
     method: "POST",
     headers: {
