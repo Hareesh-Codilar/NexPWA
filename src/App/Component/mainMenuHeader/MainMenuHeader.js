@@ -9,9 +9,16 @@ import { fetchProducts } from "../../store/actions/ProductionAction";
 class MainMenuHeader extends Component {
   constructor(props) {
     super(props);
-    this.state = { menuProductsData: [], menuList: false, menuPosition:""} ;
+    this.state = {
+      menuProductsData: [],
+      menuList: false,
+      isVisible: false,
+      menuPosition: [],
+    };
     this.menuClickhandler = this.menuClickhandler.bind(this);
+    this.toggleHidden = this.toggleHidden.bind(this);
   }
+
   componentDidMount() {
     console.log("lable");
     console.log("DId mount", this.props.menuProducts);
@@ -24,7 +31,12 @@ class MainMenuHeader extends Component {
     if (prevProps.menuProducts != this.props.menuProducts) {
       this.setState({ menuProductsData: this.props.menuProducts });
       console.log("DId update", this.props.menuProducts);
-      // console.log('Men',this.state.menuProductsData.menuProducts.categoryList[0].children[0].children.find(item => item.position === this.state.menuPosition));
+      // console.log(
+      //   "Men",
+      //   this.state.menuProductsData.menuProducts.categoryList[0].children.find(
+      //     (item) => item.position === this.state.menuPosition
+      //   )
+      // );
     }
   }
   menuClickhandler(id) {
@@ -34,15 +46,134 @@ class MainMenuHeader extends Component {
     this.props.fetchProducts(id);
     this.props.history.push(`/ProductListing/${id}`);
   }
-  mouseOverEvent = (pos) => {
-    
-    this.setState({ ...this.state, menuList: !this.state.menuList, menuPosition: pos });
-    
+  toggleHidden = (pos) => {
+    this.setState({
+      ...this.state,
+      menuList: !this.state.menuList,
+      isVisible: !this.state.isVisible,
+      menuPosition: pos,
+    });
   };
-  mouseOutEvent = () => {
-    this.mouseOverEvent();
-  };
+  // toggleHidden = () => {
+  //   this.toggleHidden();
 
+  // };
+  //  renderSubmenu(menuProductsData, menuPosition) {
+  //    return(
+  //      <>
+  //   {this.state.menuList && (
+  //     <div className="Container">
+  //       <div className={`MegaMenuSubLevelContainer ${this.state.isVisible ? 'visible': ''}`}>
+  //         <div className="MenuSubDiv show-menu-2 show-menu-2-0">
+  //           <div className="SecondLevel HasThreeLevels">
+  //             <div className="FinalLevelContainer">
+  //               <div className="MenuThirdLevel show-menu-3 show-menu-3-1">
+  //                 <div className="ThirdLevel">
+  //                   <div className="MenuThirdLevelList">
+  //                     <div
+  //                       className="MenuThirdLevelSubList"
+  //                       style={{ flexBasis: "25%" }}
+  //                     >
+  //                       <ul>
+  //                         {menuProductsData &&
+  //                           menuProductsData.menuProducts.categoryList[0].children
+  //                             .find(
+  //                               (item) =>
+  //                                 item.position ===
+  //                                 menuPosition
+  //                             )
+  //                             .children.sort(
+  //                               (a, b) =>
+  //                                 a.position - b.position
+  //                             )
+  //                             .map((item) => (
+  //                               <li
+  //                                 className="ListItem Level-3 Level-3-0 main-menu-column active"
+  //                                 key={item.id}
+  //                               >
+  //                                 <a className="parent">
+  //                                   <span className="span-3">
+  //                                     {item.name}
+  //                                   </span>
+  //                                 </a>
+  //                               </li>
+  //                             ))}
+  //                       </ul>
+  //                     </div>
+
+  //                   </div>
+  //                 </div>
+  //               </div>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   )}
+  //    </>
+  //    )
+  //  }
+  renderNestedSubmenu(nestedSubmenuData) {
+    return (
+      <>
+        {nestedSubmenuData
+          .sort((a, b) => a.position - b.position)
+          .map((item) => (
+            <>
+              <li
+                className="ListItem Level-4 Level-4-0 main-menu-column"                
+              >
+                <a className="parent">
+                  <span className="span-4">{item.name}</span>
+                </a>
+              </li>
+            </>
+          ))}
+      </>
+    );
+  }
+  renderSubmenu(menuProductsData, menuPosition) {
+    return (
+      <>
+        {this.state.menuList && (
+          <div className="Container">
+            <div
+              className={`MegaMenuSubLevelContainer ${
+                this.state.isVisible ? "visible" : ""
+              }`}
+            >
+              <div className="MenuSubDiv show-menu-2 show-menu-2-0">
+                <div className="SecondLevel HasThreeLevels" >
+                  <ul>
+                    {menuProductsData &&
+                      menuProductsData.menuProducts.categoryList[0].children
+                        .find((item) => item.position === menuPosition)
+                        .children.sort((a, b) => a.position - b.position)
+                        .map((item) => (
+                          <>
+                            <li
+                              className="ListItem Level-3 Level-3-0 main-menu-column active"
+                              key={item.id}
+                            >
+                              <a className="parent">
+                                <span className="span-3">{item.name}</span>
+                              </a>
+                            </li>
+                            {/* {console.log("lable", item)} */}
+                            {item.children.length > 0
+                              ? this.renderNestedSubmenu(item.children)
+                              : null}
+                          </>
+                        ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </>
+    );
+  }
   render() {
     const { menuProductsData, menuPosition } = this.state;
     console.log("Menu data--->>>", menuProductsData);
@@ -65,141 +196,16 @@ class MainMenuHeader extends Component {
                           >
                             <span
                               className="span-2"
-                              onMouseOut={this.mouseOutEvent}
-                              onMouseOver={() => this.mouseOverEvent(value.position)}
+                              onMouseLeave={this.toggleHidden}
+                              onMouseEnter={() =>
+                                this.toggleHidden(value.position)
+                              }
                             >
                               {" "}
                               {value.name}
                             </span>
                           </li>
-                          {this.state.menuList && (
-                            <div className="Container">
-                              <div className="MegaMenuSubLevelContainer">
-                                <div className="MenuSubDiv show-menu-2 show-menu-2-0">
-                                  <div className="SecondLevel HasThreeLevels">
-                                    <div className="FinalLevelContainer">
-                                      <div className="MenuThirdLevel show-menu-3 show-menu-3-1">
-                                        <div className="ThirdLevel">
-                                          <div className="MenuThirdLevelList">
-                                            <div
-                                              className="MenuThirdLevelSubList"
-                                              style={{ flexBasis: "25%" }}
-                                            >
-                                              <ul>
-                                                {menuProductsData && menuProductsData.menuProducts.categoryList[0].children.find(item => item.position === menuPosition).children.map(item => (
-                                                   <li className="ListItem Level-3 Level-3-0 main-menu-column active">
-                                                   <a className="parent">
-                                                     <span className="span-3">
-                                                       {item.name}
-                                                       
-                                                     </span>
-                                                   </a>
-                                                   
-                                                 </li>
-                                                 
-                                                ))}                                                    
-                                              </ul>
-                                            </div>
-                                            <div
-                                              className="MenuThirdLevelSubList"
-                                              style={{ flexBasis: "25%" }}
-                                            >
-                                              {/* <ul>
-                          <li className="ListItem Level-4 Level-4-0">
-                            <a className="child" href="/men/ethnic-wear/occasion">
-                              <span className="span-4"> Occasion</span>
-                            </a>
-                          </li>
-                          <li className="ListItem Level-3 Level-3-1 main-menu-column">
-                            <a className="parent" href="/men/denim-jeans">
-                              <span className="span-3"> Denim Jeans</span>
-                            </a>
-                          </li>
-                          <li className="ListItem Level-4 Level-4-2 active">
-                            <a className="child" href="/men/denim-jeans/shorts">
-                              <span className="span-4"> Shorts</span>
-                            </a>
-                          </li>
-                          <li className="ListItem Level-4 Level-4-3">
-                            <a className="child" href="/men/denim-jeans/pants">
-                              <span className="span-4"> Pants</span>
-                            </a>
-                          </li>
-                          <li className="ListItem Level-3 Level-3-4 main-menu-column">
-                            <a className="parent" href="/men/sweatshirt">
-                              <span className="span-3"> Sweatshirt</span>
-                            </a>
-                          </li>
-                          <li className="ListItem Level-4 Level-4-5">
-                            <a className="child" href="/men/sweatshirt/zipped">
-                              <span className="span-4"> Zipped</span>
-                            </a>
-                          </li>
-                          <li className="ListItem Level-4 Level-4-6">
-                            <a className="child" href="/men/sweatshirt/casual">
-                              <span className="span-4"> Casual</span>
-                            </a>
-                          </li>
-                          <li className="ListItem Level-3 Level-3-7 main-menu-column">
-                            <a className="parent" href="/men/jackets">
-                              <span className="span-3"> Jackets</span>
-                            </a>
-                          </li>
-                          <li className="ListItem Level-4 Level-4-8">
-                            <a className="child" href="/men/jackets/casual">
-                              <span className="span-4"> Casual</span>
-                            </a>
-                          </li>
-                          <li className="ListItem Level-4 Level-4-9">
-                            <a className="child" href="/men/jackets/denim">
-                              <span className="span-4"> Denim</span>
-                            </a>
-                          </li>
-                        </ul> */}
-                                            </div>
-                                            <div
-                                              className="MenuThirdLevelSubList"
-                                              style={{ flexBasis: "25%" }}
-                                            >
-                                              {/* <ul>
-                          <li className="ListItem Level-3 Level-3-0 main-menu-column active">
-                            <a className="parent" href="/men/sportswears">
-                              <span className="span-3"> Sportswears</span>
-                            </a>
-                          </li>
-                          <li className="ListItem Level-3 Level-3-1 main-menu-column">
-                            <a className="parent" href="/men/trouser">
-                              <span className="span-3"> Trouser</span>
-                            </a>
-                          </li>
-                          <li className="ListItem Level-4 Level-4-2 active">
-                            <a className="child" href="/men/trouser/casual">
-                              <span className="span-4"> Casual</span>
-                            </a>
-                          </li>
-                          <li className="ListItem Level-4 Level-4-3">
-                            <a className="child" href="/men/trouser/formal">
-                              <span className="span-4"> Formal</span>
-                            </a>
-                          </li>
-                        </ul> */}
-                                            </div>
-                                            <div
-                                              className="MenuThirdLevelSubList"
-                                              style={{ flexBasis: "25%" }}
-                                            >
-                                              <ul></ul>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                               
-                              </div>
-                            </div>
-                          )}
+                          {this.renderSubmenu(menuProductsData, menuPosition)}
                         </>
                       );
                     })}
