@@ -1,11 +1,9 @@
 .MegaMenuSubLevelContainer {
     display: block;
     position: absolute;
-    top: 20px;
+    top: 40px;
     margin-left: 150px;
-    /* margin-right: 70px; */
     width: 80%;
-    /* margin-right: 71px; */
     background-color: #fff;
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
