@@ -11,13 +11,14 @@
     height: 300px;
     
 }
-.MenuThirdLevelSubList{
+/* .MenuThirdLevelSubList{
     display: flex;
     flex-wrap: wrap;
-}
+} */
 .MenuSubDiv.show-menu-2.show-menu-2-0 {
     width: 100%;
     background-color: rgba(245,245,246,0.4);
+    height: 300px;
 }
 
 .ThirdLevel {
@@ -26,20 +27,49 @@
 
 .SecondLevel.HasThreeLevels {
     display: flex;
-    
-    flex-wrap: wrap;
+    height: 300px;
+    background-color: rgba(245,245,246,0.4);
+}
+.FinalLevelContainer {
+    width: 100%;
+}
+.MenuThirdLevel {
+    display: block;
+}
+.ThirdLevel {
+    padding: 5px 15px;
+}
+.MenuThirdLevelSubList {
+    flex-basis: 25%;
 }
 
 .MenuThirdLevelList {display: flex;flex-wrap: wrap;}
 
-.MenuThirdLevelSubList {
+/* .MenuThirdLevelSubList {
     padding: 0 25px;
     height: 300px;
     flex-basis: 50%;
+} */
+.MenuThirdLevel .ThirdLevel .MenuThirdLevelList .MenuThirdLevelSubList {
+    padding: 0 25px;
+    min-height: 300px;
+}
+.MenuThirdLevelSubList ul {
+    text-align: left;
+}
+span.span-3 {
+    color: #ffd500;  
 }
 
-span.span-3 {
-    color: #ffd500;
+span.span-4{
+    font-weight: 500;
+    color: rgba(34, 34, 34, 0.644);
+    font-size: 15px;
+       
+}
+span.span-4:hover{
+    color: #222;
+    font-weight: 700;
 }
 
 li.main-menu-column {
@@ -52,6 +82,19 @@ li.main-menu-column {
 
 ul li.main-menu-column {
     list-style-type: none;
+}
+/* .FinalLevelContainer .MenuThirdLevel .ThirdLevel .MenuThirdLevelList .MenuThirdLevelSubList a.parent {
+    color: #222;
+    font-size: 15px;
+    font-weight: 700;
+    display: inline-block;
+} */
+.MenuThirdLevelList .MenuThirdLevelSubList a.child {
+    font-weight: 500;
+}
+.MenuThirdLevel .ThirdLevel .MenuThirdLevelList .MenuThirdLevelSubList li.Level-4 {
+    margin: 0;
+    padding: 3px 3%;
 }
 
 li.ListItem {

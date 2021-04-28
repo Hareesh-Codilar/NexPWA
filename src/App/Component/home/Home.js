@@ -4,17 +4,8 @@ import React, { Component } from 'react'
     render() {
         return (
             <div>
-               <h1>Hello</h1> 
-               <h1>Hello</h1> 
-               <h1>Hello</h1> 
-               <h1>Hello</h1> 
-               <h1>Hello</h1> 
-               <h1>Hello</h1> 
-               <h1>Hello</h1> 
-               <h1>Hello</h1> 
-               <h1>Hello</h1> 
-               <h1>Hello</h1> 
-               <h1>Hello</h1> 
+            <h1 className="Welcomesg">WELCOME TO CODILAR</h1> 
+              
             </div>
         )
     }

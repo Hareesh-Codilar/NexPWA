@@ -13,6 +13,7 @@ class MainMenuHeader extends Component {
       menuProductsData: [],
       menuList: false,
       isVisible: false,
+      singleSubmenuList:[],
       menuPosition: [],
     };
     this.menuClickhandler = this.menuClickhandler.bind(this);
@@ -31,12 +32,6 @@ class MainMenuHeader extends Component {
     if (prevProps.menuProducts != this.props.menuProducts) {
       this.setState({ menuProductsData: this.props.menuProducts });
       console.log("DId update", this.props.menuProducts);
-      // console.log(
-      //   "Men",
-      //   this.state.menuProductsData.menuProducts.categoryList[0].children.find(
-      //     (item) => item.position === this.state.menuPosition
-      //   )
-      // );
     }
   }
   menuClickhandler(id) {
@@ -54,65 +49,6 @@ class MainMenuHeader extends Component {
       menuPosition: pos,
     });
   };
-  // toggleHidden = () => {
-  //   this.toggleHidden();
-
-  // };
-  //  renderSubmenu(menuProductsData, menuPosition) {
-  //    return(
-  //      <>
-  //   {this.state.menuList && (
-  //     <div className="Container">
-  //       <div className={`MegaMenuSubLevelContainer ${this.state.isVisible ? 'visible': ''}`}>
-  //         <div className="MenuSubDiv show-menu-2 show-menu-2-0">
-  //           <div className="SecondLevel HasThreeLevels">
-  //             <div className="FinalLevelContainer">
-  //               <div className="MenuThirdLevel show-menu-3 show-menu-3-1">
-  //                 <div className="ThirdLevel">
-  //                   <div className="MenuThirdLevelList">
-  //                     <div
-  //                       className="MenuThirdLevelSubList"
-  //                       style={{ flexBasis: "25%" }}
-  //                     >
-  //                       <ul>
-  //                         {menuProductsData &&
-  //                           menuProductsData.menuProducts.categoryList[0].children
-  //                             .find(
-  //                               (item) =>
-  //                                 item.position ===
-  //                                 menuPosition
-  //                             )
-  //                             .children.sort(
-  //                               (a, b) =>
-  //                                 a.position - b.position
-  //                             )
-  //                             .map((item) => (
-  //                               <li
-  //                                 className="ListItem Level-3 Level-3-0 main-menu-column active"
-  //                                 key={item.id}
-  //                               >
-  //                                 <a className="parent">
-  //                                   <span className="span-3">
-  //                                     {item.name}
-  //                                   </span>
-  //                                 </a>
-  //                               </li>
-  //                             ))}
-  //                       </ul>
-  //                     </div>
-
-  //                   </div>
-  //                 </div>
-  //               </div>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   )}
-  //    </>
-  //    )
-  //  }
   renderNestedSubmenu(nestedSubmenuData) {
     return (
       <>
@@ -120,10 +56,8 @@ class MainMenuHeader extends Component {
           .sort((a, b) => a.position - b.position)
           .map((item) => (
             <>
-              <li
-                className="ListItem Level-4 Level-4-0 main-menu-column"                
-              >
-                <a className="parent">
+              <li className="ListItem Level-4 Level-4-0 main-menu-column">
+                <a className="child">
                   <span className="span-4">{item.name}</span>
                 </a>
               </li>
@@ -131,6 +65,39 @@ class MainMenuHeader extends Component {
           ))}
       </>
     );
+  }
+  renderMenuList(menuProductsData, menuPosition) {
+    {
+      return (
+        <>
+          <div className="MenuThirdLevelSubList">
+            <ul>
+              {menuProductsData &&
+                menuProductsData.menuProducts.categoryList[0].children
+                  .find((item) => item.position === menuPosition)
+                  .children.sort((a, b) => a.position - b.position)
+                  .map((item) => (
+                    <>
+                      <li
+                        className="ListItem Level-3 Level-3-0 main-menu-column active"
+                        key={item.id}
+                      >
+                        <a className="parent">
+                          <span className="span-3">{item.name}</span>
+                        </a>
+                      </li>
+
+                      {item.children.length > 0
+                        ? this.renderNestedSubmenu(item.children)
+                        : null}
+                    </>
+                  ))}
+            </ul>
+          </div>
+        </>
+      );
+    }
+    
   }
   renderSubmenu(menuProductsData, menuPosition) {
     return (
@@ -143,29 +110,19 @@ class MainMenuHeader extends Component {
               }`}
             >
               <div className="MenuSubDiv show-menu-2 show-menu-2-0">
-                <div className="SecondLevel HasThreeLevels" >
-                  <ul>
-                    {menuProductsData &&
-                      menuProductsData.menuProducts.categoryList[0].children
-                        .find((item) => item.position === menuPosition)
-                        .children.sort((a, b) => a.position - b.position)
-                        .map((item) => (
-                          <>
-                            <li
-                              className="ListItem Level-3 Level-3-0 main-menu-column active"
-                              key={item.id}
-                            >
-                              <a className="parent">
-                                <span className="span-3">{item.name}</span>
-                              </a>
-                            </li>
-                            {/* {console.log("lable", item)} */}
-                            {item.children.length > 0
-                              ? this.renderNestedSubmenu(item.children)
-                              : null}
-                          </>
-                        ))}
-                  </ul>
+                <div
+                  className="SecondLevel HasThreeLevels"
+                  onMouseLeave={this.toggleHidden}
+                >
+                  <div className="FinalLevelContainer">
+                    <div className="MenuThirdLevel show-menu-3 show-menu-3-1 active">
+                      <div className="ThirdLevel">
+                        <div className="MenuThirdLevelList">                          
+                          {this.renderMenuList(menuProductsData, menuPosition)}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -196,7 +153,7 @@ class MainMenuHeader extends Component {
                           >
                             <span
                               className="span-2"
-                              onMouseLeave={this.toggleHidden}
+                              // onMouseLeave={this.toggleHidden}
                               onMouseEnter={() =>
                                 this.toggleHidden(value.position)
                               }
