@@ -12,8 +12,7 @@
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-  }
-  
+  }  
   .sidenav button {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -33,11 +32,9 @@
   .Sidemenuitems{
     display: block;
   }
-  
   .sidenav button:hover {
     color: #f1f1f1;
   }
- 
   .sidenav .closebtn {
     position: absolute;
     top: 0;
@@ -56,11 +53,9 @@
     float: right;
   }
   .Sidemenuitems.item-active .Sidesunmenus{
-    /* display: none; */
     overflow: hidden;
     display: block;
-    color: skyblue;
-    
+    color: skyblue;    
   }
   .Sidemenuitems.item-active .Sidenavspan{
     font-weight: 600;

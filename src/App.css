@@ -1,26 +1,23 @@
-.header-container{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    border-bottom: 1px solid lightgray;
-    background-color: #fff;
-    /* background-color: #f3f3f3 */
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  border-bottom: 1px solid lightgray;
+  background-color: #fff;
 }
-.header-topbar{
+.header-topbar {
   height: 30px;
-display: block;
-width: 100%;
-background-color:#f3f3f3
+  display: block;
+  width: 100%;
+  background-color: #f3f3f3;
 }
-.header-topbar .topbar-content{
-  /* height: 30px; */
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-
+.header-topbar .topbar-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
 }
 .topbar-content span {
   padding: 0 10px;
@@ -28,69 +25,68 @@ background-color:#f3f3f3
   font-size: 10px;
   font-weight: 700;
 }
-.header-nav{
+.header-nav {
   height: 90px;
-    display: flex;
-    align-items: center;
-    padding: 0 12px;
-    z-index: 20;
-    max-width:1400px;
-    margin: auto;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  z-index: 20;
+  max-width: 1400px;
+  margin: auto;
 }
-.header-searchField{
+.header-searchField {
   width: 365px;
   height: 40px;
   border: none;
   background-color: #f3f3f3;
 }
-.Welcomesg{
+.Welcomesg {
   margin-top: 200px;
   text-align: center;
   color: skyblue;
 }
-.header-logo{
+.header-logo {
   text-align: center;
-    flex: 1;
+  flex: 1;
 }
-.header-profile{
+.header-profile {
   margin-left: auto;
   display: flex;
 }
-.Logo-image{
+.Logo-image {
   width: 200px;
 }
-.language-Select button{
+.language-Select button {
   padding: 12px;
   border: none;
 }
-.language-Select i{
+.language-Select i {
   margin-left: 10px;
 }
-.Inr-Profile button{
+.Inr-Profile button {
   padding: 12px;
   margin-left: 5px;
   border: none;
 }
-.Inr-Profile i{
+.Inr-Profile i {
   margin-left: 10px;
 }
-.My-account button{
+.My-account button {
   padding: 7px;
-  margin-left:5px;
+  margin-left: 5px;
   border: none;
 }
-.cart button{
+.cart button {
   padding: 8px;
   margin-left: 5px;
   border: none;
 }
-.mainMenu-Header{
-  
+.mainMenu-Header {
   display: flex;
   align-items: center;
   padding: 5px 12px;
   z-index: 20;
-  max-width:1400px;
+  max-width: 1400px;
   margin: auto;
   height: 30px;
   text-align: center;
@@ -98,10 +94,10 @@ background-color:#f3f3f3
   margin-bottom: 10px;
 }
 .MegaMenuComponent .Container ul.MenuList li.ListItem a {
-color: #222;
-font-size: 15px;
-display: inline-block;
-text-decoration: none;
+  color: #222;
+  font-size: 15px;
+  display: inline-block;
+  text-decoration: none;
 }
 ul.MenuList {
   display: flex;
@@ -110,9 +106,9 @@ ul.MenuList {
   justify-content: center;
 }
 span.listspan {
-text-decoration: none;
-margin-right: 25px;
-font-size: 15px;
+  text-decoration: none;
+  margin-right: 25px;
+  font-size: 15px;
   color: #222;
 }
 li span.span-2 {
@@ -120,9 +116,9 @@ li span.span-2 {
   margin-left: 15px;
   justify-content: center;
 }
- li span.span-2:hover{
-border-bottom: 2px solid #f3ce29;
-cursor: pointer;
+li span.span-2:hover {
+  border-bottom: 2px solid #f3ce29;
+  cursor: pointer;
 }
 .span-2 .MegaMenuSubLevelContainer {
   display: none;
@@ -132,11 +128,11 @@ cursor: pointer;
   display: block;
 }
 
- /* 
+/* 
  Header-container media quary 
  */
- @media screen and (max-width: 450px) {
+@media screen and (max-width: 450px) {
   .header-container {
-     display: none;
+    display: none;
   }
 }

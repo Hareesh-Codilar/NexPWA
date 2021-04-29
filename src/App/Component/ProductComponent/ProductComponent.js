@@ -46,7 +46,9 @@ export default class ProductComponent extends Component {
                               <div className="header"></div>
                               <div className="productPrice">
                                 {" "}
-                                <strong itemprop="lowPrice">{getSymbolFromCurrency("INR")}</strong>
+                                <strong itemprop="lowPrice">
+                                  {getSymbolFromCurrency("INR")}
+                                </strong>
                                 <span> {value}</span>
                               </div>
                               <div className="product-name"> {name} </div>

@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import MainMenuHeader from "../mainMenuHeader/MainMenuHeader";
 import NavBar from '../NavBar/NavBar'
 import SideNav from "./SideNav";
-// import SideNav from "./SideNav";
 
+/* 
+ @Header class component
+*/
 class Header extends Component {
   constructor(props){
     super(props)
-    // this.props={
-      
-    // }
   }
   render() {
     return (<>

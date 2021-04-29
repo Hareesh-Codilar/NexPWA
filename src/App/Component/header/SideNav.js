@@ -9,7 +9,6 @@ export default class SideNav extends Component {
     };
     this.closeNav = this.closeNav.bind(this);
     this.openNav = this.openNav.bind(this);
-    // this.togglemenu = this.togglemenu.bind(this);
   }
   openNav() {
     document.getElementById("mySidenav").style.width = "330px";
@@ -20,10 +19,14 @@ export default class SideNav extends Component {
   }
   handleExpandCollaps = (name) => {
     if (this.state.activeCollapse === name) {
-      //If collapsiable is already visible and clicked on same then this will hide it
+      /*
+      If collapsiable is already visible and clicked on same then this will hide it 
+      */
       this.setState({ activeCollapse: "" });
     } else {
-      //To show collapsiable
+      /*
+      To show collapsiable 
+      */
       this.setState({ activeCollapse: name });
     }
   };

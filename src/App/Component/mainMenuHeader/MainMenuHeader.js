@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import "../mainMenuHeader/mainMenuHeader.css";
-// import "../mainMenuHeader/mainMenuHeader.css"
 import { connect } from "react-redux";
 import { fetchMenuProducts } from "../../store/actions/MenuAction";
 import { withRouter } from "react-router-dom";
 import { fetchProducts } from "../../store/actions/ProductionAction";
 
+/* 
+ @MainMenuHeader class component
+*/
 class MainMenuHeader extends Component {
   constructor(props) {
     super(props);
@@ -13,20 +15,17 @@ class MainMenuHeader extends Component {
       menuProductsData: [],
       menuList: false,
       isVisible: false,
-      singleSubmenuList:[],
+      singleSubmenuList: [],
       menuPosition: [],
     };
     this.menuClickhandler = this.menuClickhandler.bind(this);
     this.toggleHidden = this.toggleHidden.bind(this);
   }
-
   componentDidMount() {
     console.log("lable");
     console.log("DId mount", this.props.menuProducts);
     this.props.fetchMenuProducts("23");
     this.setState({ menuProductsData: this.props.menuProducts });
-
-    // this.setState({productData: this.props.products});
   }
   componentDidUpdate(prevProps) {
     if (prevProps.menuProducts != this.props.menuProducts) {
@@ -36,8 +35,6 @@ class MainMenuHeader extends Component {
   }
   menuClickhandler(id) {
     console.log("handler id", id);
-    // this.props.history.push('/page');
-    // let catId = this.props.match.params.catId;
     this.props.fetchProducts(id);
     this.props.history.push(`/ProductListing/${id}`);
   }
@@ -58,7 +55,12 @@ class MainMenuHeader extends Component {
             <>
               <li className="ListItem Level-4 Level-4-0 main-menu-column">
                 <a className="child">
-                  <span className="span-4" onClick={() => this.menuClickhandler(item.id)}>{item.name}</span>
+                  <span
+                    className="span-4"
+                    onClick={() => this.menuClickhandler(item.id)}
+                  >
+                    {item.name}
+                  </span>
                 </a>
               </li>
             </>
@@ -82,8 +84,13 @@ class MainMenuHeader extends Component {
                         className="ListItem Level-3 Level-3-0 main-menu-column active"
                         key={item.id}
                       >
-                        <a className="parent" >
-                          <span className="span-3" onClick={() => this.menuClickhandler(item.id)}>{item.name}</span>
+                        <a className="parent">
+                          <span
+                            className="span-3"
+                            onClick={() => this.menuClickhandler(item.id)}
+                          >
+                            {item.name}
+                          </span>
                         </a>
                       </li>
 
@@ -97,7 +104,6 @@ class MainMenuHeader extends Component {
         </>
       );
     }
-    
   }
   renderSubmenu(menuProductsData, menuPosition) {
     return (
@@ -117,7 +123,7 @@ class MainMenuHeader extends Component {
                   <div className="FinalLevelContainer">
                     <div className="MenuThirdLevel show-menu-3 show-menu-3-1 active">
                       <div className="ThirdLevel">
-                        <div className="MenuThirdLevelList">                          
+                        <div className="MenuThirdLevelList">
                           {this.renderMenuList(menuProductsData, menuPosition)}
                         </div>
                       </div>
@@ -153,7 +159,6 @@ class MainMenuHeader extends Component {
                           >
                             <span
                               className="span-2"
-                              // onMouseLeave={this.toggleHidden}
                               onMouseEnter={() =>
                                 this.toggleHidden(value.position)
                               }
