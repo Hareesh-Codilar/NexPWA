@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import MainMenuHeader from "../mainMenuHeader/MainMenuHeader";
 import NavBar from '../NavBar/NavBar'
+import SideNav from "./SideNav";
+// import SideNav from "./SideNav";
 
 class Header extends Component {
   constructor(props){
     super(props)
-    this.props={
+    // this.props={
       
-    }
+    // }
   }
   render() {
-    return (
+    return (<>
         <header className="header-container">
           <div className="header-topbar">
             <div className="topbar-content">
@@ -23,6 +25,8 @@ class Header extends Component {
           <NavBar />
           <MainMenuHeader />
         </header>
+        <SideNav />
+        </>
     );
   }
 }
