@@ -53,12 +53,17 @@
 .MenuThirdLevel .ThirdLevel .MenuThirdLevelList .MenuThirdLevelSubList {
     padding: 0 25px;
     min-height: 300px;
+    column-count: 4;
+    -moz-column-count: 4;
+    -webkit-column-count: 4;
+    width: 100%;
 }
 .MenuThirdLevelSubList ul {
     text-align: left;
 }
 span.span-3 {
-    color: #ffd500;  
+    color: #ffd500; 
+    cursor: pointer; 
 }
 
 span.span-4{
@@ -70,6 +75,7 @@ span.span-4{
 span.span-4:hover{
     color: #222;
     font-weight: 700;
+    cursor: pointer;
 }
 
 li.main-menu-column {

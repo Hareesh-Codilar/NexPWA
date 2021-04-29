@@ -58,7 +58,7 @@ class MainMenuHeader extends Component {
             <>
               <li className="ListItem Level-4 Level-4-0 main-menu-column">
                 <a className="child">
-                  <span className="span-4">{item.name}</span>
+                  <span className="span-4" onClick={() => this.menuClickhandler(item.id)}>{item.name}</span>
                 </a>
               </li>
             </>
@@ -82,8 +82,8 @@ class MainMenuHeader extends Component {
                         className="ListItem Level-3 Level-3-0 main-menu-column active"
                         key={item.id}
                       >
-                        <a className="parent">
-                          <span className="span-3">{item.name}</span>
+                        <a className="parent" >
+                          <span className="span-3" onClick={() => this.menuClickhandler(item.id)}>{item.name}</span>
                         </a>
                       </li>
 
