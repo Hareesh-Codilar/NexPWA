@@ -1,6 +1,5 @@
 .image-container{
-    display: flex;
-   
+    display: flex; 
 }
 .main-container{
     display: flex;
@@ -9,8 +8,7 @@
     margin-left: 256px;
     margin-right: 261px;
 }
-.main-container>div {
-   
+.main-container>div {  
     flex: 0 1;
     margin: 0.5vh 0.5vw;
 }
@@ -36,5 +34,4 @@
     font-weight: 700;
     line-height: 1;
     font-size: 20px;
-    /* margin-bottom: 10px; */
 }

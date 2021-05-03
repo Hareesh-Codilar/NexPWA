@@ -93,3 +93,7 @@ li.ListItem {
   position: absolute;
   width: 70%;
 }
+span.pluse-icon {
+    display: none;
+}
+

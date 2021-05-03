@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import getSymbolFromCurrency from "currency-symbol-map";
+import { withRouter } from "react-router";
+import ProductDetails from "../ProductDetails/ProductDetails";
 
 /*
  * @Class ProductComponent
  */
-export default class ProductComponent extends Component {
+ class ProductComponent extends Component {
   constructor(props) {
     super(props);
   }
@@ -15,6 +17,9 @@ export default class ProductComponent extends Component {
       </div>
     );
   };
+  routeChange=()=> {
+    this.props.history.push(`/Product/:ProductId`);
+  }
 
   render() {
     const { products } = this.props.products;
@@ -37,18 +42,17 @@ export default class ProductComponent extends Component {
                     },
                   } = item;
                   return (
+                    <>
                     <div className="ui-container">
                       <div className="four column wide">
-                        <div className="ui link cards">
+                        <div className="ui link cards"  onClick={this.routeChange}>
                           <div className="card">
                             {this.renderImage(url, name)}
                             <div className="content">
                               <div className="header"></div>
                               <div className="productPrice">
                                 {" "}
-                                <strong itemprop="lowPrice">
-                                  {getSymbolFromCurrency("INR")}
-                                </strong>
+                                <strong itemprop="lowPrice">{getSymbolFromCurrency("INR")}</strong>
                                 <span> {value}</span>
                               </div>
                               <div className="product-name"> {name} </div>
@@ -57,6 +61,8 @@ export default class ProductComponent extends Component {
                         </div>
                       </div>
                     </div>
+                    {/* <ProductDetails ProductDetails={products} /> */}
+                    </>
                   );
                 })}
               </>
@@ -71,3 +77,4 @@ export default class ProductComponent extends Component {
     );
   }
 }
+export default withRouter(ProductComponent)

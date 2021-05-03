@@ -45,7 +45,7 @@ export const fetchProducts = (catId) => (dispatch) => {
         now: new Date().toISOString(),
       },
     }),
-  }) 
+  })
     .then((res) => res.json())
     .then((response) => {
       console.log("result product ->>>>>", response);
@@ -58,4 +58,4 @@ export const fetchProducts = (catId) => (dispatch) => {
       });
     })
     .catch(console.error);
-  };
+};

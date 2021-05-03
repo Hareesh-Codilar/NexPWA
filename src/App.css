@@ -44,6 +44,10 @@
   margin-top: 200px;
   text-align: center;
   color: skyblue;
+  
+}
+h1.Welcomesg {
+  margin-top: 240px;
 }
 .header-logo {
   text-align: center;
@@ -128,11 +132,130 @@ li span.span-2:hover {
   display: block;
 }
 
+.catagory-mobile {
+  display: none;
+  align-items: center;
+  margin: auto;
+  height: 30px;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
 /* 
  Header-container media quary 
  */
 @media screen and (max-width: 450px) {
-  .header-container {
+  .header-div {
     display: none;
   }
+}
+/* 
+ Header-mobile-view media quary 
+ */
+@media screen and (min-width: 450px) {
+  .header-mobile-view {
+    display: none;
+  }
+}
+/* 
+ Menu-catagory media quary 
+ */
+@media screen and (max-width: 500px) {
+  .mainMenu-Header {
+    display: none;
+    align-items: center;
+    margin: auto;
+    height: 30px;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .catagory-mobile {
+    display: block;
+    align-items: center;
+    margin: auto;
+    height: 30px;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .MegaMenuComponent .Container ul.MenuList li.ListItem a {
+    color: #222;
+    font-size: 15px;
+    display: block;
+    text-decoration: none;
+  }
+  ul.MenuList {
+    display: block;
+    list-style-type: none;
+    text-align: center;
+    justify-content: center;
+  }
+  span.listspan {
+    text-decoration: none;
+    margin-right: 25px;
+    font-size: 15px;
+    color: #222;
+  }
+  li.ListItem {
+    background-color: white;
+    list-style-type: none;
+    width: 100%;
+    line-height: 5;
+}
+  li span.span-2 {
+    margin-right: 15px;
+    margin-left: 15px;
+    justify-content: center;
+  }
+  .Inr-Profile button {
+    padding: 12px;
+    margin-left: 5px;
+    border: none;
+  }
+  .Inr-Profile i {
+    margin-left: 10px;
+  }
+  .My-account button {
+    padding: 7px;
+    margin-left: 5px;
+    border: none;
+    float: right;
+  }
+  .cart button {
+    padding: 8px;
+    margin-left: 5px;
+    border: none;
+    float: right;
+    vertical-align: middle;
+  }
+  .SideNavbar .Menu-logo, .header-logo, .My-account, .cart{
+    display: inline-flex;
+    vertical-align: middle;
+  }
+  .header-logo img{
+      width: 120px;
+     margin-left: 10px;
+  }
+  .cart {
+    /* float: right; */
+    margin-left: 135px;
+}
+.My-account {
+  float: right;
+}
+/* power */
+.MegaMenuSubLevelContainer {
+  display: block;
+  position: absolute;
+}
+
+/* hover dev close */
+.pluse-icon-mobile{
+  display: block;
+    content: "\002B";
+    float: right;
+  
+}
+
 }

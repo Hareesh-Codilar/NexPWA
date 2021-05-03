@@ -7,7 +7,7 @@ import React, { Component } from 'react'
     render() {
         return (
             <div className>
-            <h1 className="Welcomesg">WELCOME TO CODILAR</h1>               
+            <h1 className="Welcomesg">WELCOME TO NexPWA_</h1>               
             </div>
         )
     }

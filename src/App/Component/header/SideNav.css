@@ -1,5 +1,13 @@
 .MenusideNavbar{
-    margin-top: 10px;
+    padding: 5px 10px;
+    display: flex;
+}
+.SideNavbar {
+  width: 100%;
+  display: block;
+}
+.logos-on-right{
+  float: right;
 }
 .sidenav {
     height: 100%;
@@ -59,5 +67,6 @@
   }
   .Sidemenuitems.item-active .Sidenavspan{
     font-weight: 600;
+    color: black;
     display: block;
   }
