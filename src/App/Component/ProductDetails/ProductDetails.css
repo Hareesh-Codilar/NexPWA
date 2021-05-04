@@ -1,0 +1,8 @@
+.product-Detail-page{
+    margin-top: 190px;
+}
+@media screen and (max-width: 500px) {
+    .product-Detail-page {
+        margin-top: 50px;
+      }
+}

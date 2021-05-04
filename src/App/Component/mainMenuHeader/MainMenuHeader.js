@@ -242,7 +242,7 @@ class MainMenuHeader extends Component {
               <>
                 <ul className="MenuList">
                   {menuProductsData.menuProducts.categoryList[0].children
-                    
+                    .sort((a, b) => a.position - b.position)
                     .map((value, index) => {
                       return (
                         <>
@@ -275,44 +275,7 @@ class MainMenuHeader extends Component {
           <> No Data</>
         )}
       </div>
-      <div className="catagory-mobile"> 
-      {menuProductsData.menuProducts ? (
-          <>
-            {menuProductsData.menuProducts.categoryList &&
-            menuProductsData.menuProducts.categoryList.length > 0 ? (
-              <>
-                <ul className="MenuList-mobile">
-                  {menuProductsData.menuProducts.categoryList[0].children
-                    .sort((a, b) => a.position - b.position)
-                    .map((value, index) => {
-                      return (
-                        <>
-                          <li
-                            className="ListItem Level-2 Level-2-0 arrow"
-                            // onClick={() => this.menuClickhandler(value.id)}
-                          >
-                            <span
-                              className="span-2"
-                            >
-                              {" "}
-                              {value.name}
-                            {/* <span className="pluse-icon-mobile">&#43;</span> */}
-                            </span>
-                          </li>
-                          {/* {this.renderSubmenuMobile(menuProductsData, menuPosition)} */}
-                        </>
-                      );
-                    })}
-                </ul>
-              </>
-            ) : (
-              <> loading...</>
-            )}
-          </>
-        ) : (
-          <> No Data</>
-        )}
-      </div>
+      
   </>  );
   }
 }

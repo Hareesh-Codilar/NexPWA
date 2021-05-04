@@ -60,8 +60,7 @@ import ProductDetails from "../ProductDetails/ProductDetails";
                           </div>
                         </div>
                       </div>
-                    </div>
-                    {/* <ProductDetails ProductDetails={products} /> */}
+                    </div>                    
                     </>
                   );
                 })}

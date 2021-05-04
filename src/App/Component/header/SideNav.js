@@ -89,10 +89,22 @@ class SideNav extends Component {
     super(props);
     this.state = {
       activeCollapse: "",
-      menus:[]
+      menuProductsList:[],
+      menuProducts:[]
     };
     this.closeNav = this.closeNav.bind(this);
     this.openNav = this.openNav.bind(this);
+  }
+  componentDidMount() {
+    console.log("did mount--->>da", this.props.menuProducts);
+    this.setState({ menuProductsList: this.props.menuProducts });
+    console.log("List ->>", this.props.menuProducts);
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.menuProducts != this.props.menuProducts) {
+      this.setState({ menuProductsList: this.props.menuProducts });
+      console.log("DId update...", this.props.menuProducts);
+    }
   }
 
   openNav() {
@@ -157,6 +169,11 @@ class SideNav extends Component {
     };
     // const { produ } = this.props;
     // console.log(produ);
+    
+    console.log("data->>>", this.props.menuProducts);
+    const { menuProductsList } =this.state;
+    console.log("menuProductlist", menuProductsList);
+    
     return (
       <div className="MenusideNavbar Header">
         <sidenav className="SideNavbar">
@@ -165,28 +182,24 @@ class SideNav extends Component {
               &times;
             </a>
 
-            <button
-             
-            >
-              
+            <button>
               <Wrapper>
-                <SideBarManu menus={menus} />
+                <SideBarManu menus={menus} productMenuData={menuProductsList} />
               </Wrapper>
-              
             </button>
 
-            <button
+            {/* <button
               href="#"
               className={`Sidemenuitems ${
                 this.state.activeCollapse === "Services" ? "item-active" : ""
               }`}
               onClick={() => this.handleExpandCollaps("Services")}
               data-id="Services"
-            >
-            
-              {/* <MainMenuHeader /> */}
-              <div className="Sidesunmenus">Hello</div>
-            </button>
+            > */}
+
+            {/* <MainMenuHeader /> */}
+            {/* <div className="Sidesunmenus">Hello</div>
+            </button> */}
             {/* <button
               href="#"
               className={`Sidemenuitems ${
@@ -236,4 +249,9 @@ class SideNav extends Component {
   }
 }
 
-export default SideNav;
+const mapStateToProps = (state) => {
+  return {
+    menuProducts: state.menuProducts,
+  };
+};
+export default connect(mapStateToProps) (SideNav);

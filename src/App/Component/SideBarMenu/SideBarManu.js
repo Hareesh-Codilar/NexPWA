@@ -63,7 +63,7 @@
 
 //     this.setState({ activeMenus: newActiveMenus });
 //     // setActiveMenus(newActiveMenus);
-    
+
 //   }
 
 //   render() {
@@ -167,7 +167,7 @@ const LI = styled.li``;
 const Item = styled.div`
   display: flex;
   padding: 12px 18px;
-  padding-left: ${props => `${props.dept * 18}px`};
+  padding-left: ${(props) => `${props.dept * 18}px`};
   align-items: center;
 `;
 const Label = styled.span`
@@ -192,18 +192,18 @@ const Arrow = styled.span`
 
     border-top: 4px solid #000;
 
-    transform: ${props => (props.toggle ? "rotate(180deg)" : "rotate(0deg)")};
+    transform: ${(props) => (props.toggle ? "rotate(180deg)" : "rotate(0deg)")};
   }
 `;
 
-const MultiMenus = ({ menus }) => {
+const SideBarManu = ({ menus, productMenuData }) => {
   const [activeMenus, setActiveMenus] = useState([]);
 
-  const handleMenuClick = data => {
+  const handleMenuClick = (data) => {
     console.log(data);
   };
 
-  const handleArrowClick = menuName => {
+  const handleArrowClick = (menuName) => {
     let newActiveMenus = [...activeMenus];
 
     if (newActiveMenus.includes(menuName)) {
@@ -221,7 +221,8 @@ const MultiMenus = ({ menus }) => {
   const ListMenu = ({ dept, data, hasSubMenu, menuName, menuIndex }) => (
     <LI>
       <Item dept={dept}>
-        <Label onClick={() => handleMenuClick(data)}>{data.label} </Label>
+        <Label onClick={() => handleMenuClick(data)}>{data.name} </Label>
+        {console.log("hasSubMenu", hasSubMenu)}
         {hasSubMenu && (
           <Arrow
             onClick={() => handleArrowClick(menuName)}
@@ -232,7 +233,7 @@ const MultiMenus = ({ menus }) => {
       {hasSubMenu && (
         <SubMenu
           dept={dept}
-          data={data.submenu}
+          data={data.children}
           toggle={activeMenus.includes(menuName)}
           menuIndex={menuIndex}
         />
@@ -256,7 +257,7 @@ const MultiMenus = ({ menus }) => {
             <ListMenu
               dept={dept}
               data={menu}
-              hasSubMenu={menu.submenu}
+              hasSubMenu={menu.children}
               menuName={menuName}
               key={menuName}
               menuIndex={index}
@@ -267,25 +268,46 @@ const MultiMenus = ({ menus }) => {
     );
   };
 
+  {
+    console.log("productmenu", productMenuData);
+  }
   return (
     <UL>
-      {menus.map((menu, index) => {
-        const dept = 1;
-        const menuName = `sidebar-menu-${dept}-${index}`;
-
-        return (
-          <ListMenu
-            dept={dept}
-            data={menu}
-            hasSubMenu={menu.submenu}
-            menuName={menuName}
-            key={menuName}
-            menuIndex={index}
-          />
-        );
-      })}
+      {productMenuData.menuProducts ? (
+        <>
+          {productMenuData.menuProducts.categoryList &&
+          productMenuData.menuProducts.categoryList.length > 0 ? (
+            <>
+              <ul className="MenuList mobile">
+                {productMenuData.menuProducts.categoryList[0].children
+                  .sort((a, b) => a.position - b.position)
+                  .map((menu, index) => {
+                    const dept = 1;
+                    const menuName = `sidebar-menu-${dept}-${index}`;
+                    return (
+                      <>
+                        <ListMenu
+                          dept={dept}
+                          data={menu}
+                          hasSubMenu={menu.children}
+                          menuName={menuName}
+                          key={menuName}
+                          menuIndex={index}
+                        />
+                      </>
+                    );
+                  })}
+              </ul>
+            </>
+          ) : (
+            <> loading...</>
+          )}
+        </>
+      ) : (
+        <> No Data</>
+      )}
     </UL>
   );
 };
 
-export default MultiMenus;
+export default SideBarManu;
