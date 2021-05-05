@@ -188,7 +188,7 @@ li span.span-2:hover {
   ul.MenuList {
     display: block;
     list-style-type: none;
-    text-align: center;
+    text-align: left;
     justify-content: center;
   }
   span.listspan {

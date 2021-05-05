@@ -81,8 +81,8 @@ const menus = [
   },
 ];
 const Wrapper = styled.aside`
-  background: #ccc;
-  width: 300px;
+background: white;
+width: 100%;
 `;
 class SideNav extends Component {
   constructor(props) {
@@ -187,43 +187,6 @@ class SideNav extends Component {
                 <SideBarManu menus={menus} productMenuData={menuProductsList} />
               </Wrapper>
             </button>
-
-            {/* <button
-              href="#"
-              className={`Sidemenuitems ${
-                this.state.activeCollapse === "Services" ? "item-active" : ""
-              }`}
-              onClick={() => this.handleExpandCollaps("Services")}
-              data-id="Services"
-            > */}
-
-            {/* <MainMenuHeader /> */}
-            {/* <div className="Sidesunmenus">Hello</div>
-            </button> */}
-            {/* <button
-              href="#"
-              className={`Sidemenuitems ${
-                this.state.activeCollapse === "Clients" ? "item-active" : ""
-              }`}
-              onClick={() => this.handleExpandCollaps("Clients")}
-              data-id="Clients"
-            >
-              <span className="Sidenavspan">Clients</span>
-              <span className="pluse-icon">&#43;</span>
-              <div className="Sidesunmenus">Hello</div>
-            </button>
-            <button
-              href="#"
-              className={`Sidemenuitems ${
-                this.state.activeCollapse === "Contact" ? "item-active" : ""
-              }`}
-              onClick={() => this.handleExpandCollaps("Contact")}
-              data-id="Contact"
-            >
-              <span>Contact</span>
-              <span className="pluse-icon">&#43;</span>
-              <div className="Sidesunmenus">Hello</div>
-            </button> */}
           </div>
 
           <div className="Menu-logo">

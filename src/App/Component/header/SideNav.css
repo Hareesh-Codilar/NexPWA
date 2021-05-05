@@ -22,7 +22,6 @@
     padding-top: 60px;
   }  
   .sidenav button {
-    padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
@@ -30,7 +29,6 @@
     transition: 0.3s;
     /* color: white; */
     cursor: pointer;
-    padding: 18px;
     width: 100%;
     border: none;
     text-align: left;
@@ -40,9 +38,9 @@
   .Sidemenuitems{
     display: block;
   }
-  .sidenav button:hover {
+  /* .sidenav button:hover {
     color: #f1f1f1;
-  }
+  } */
   .sidenav .closebtn {
     position: absolute;
     top: 0;
@@ -50,6 +48,12 @@
     font-size: 36px;
     margin-left: 50px;
   }
+  ul.MenuList.mobile {
+    padding-left: 0px;
+}
+ul.MenuList.mobile li{
+  border-bottom: 1px solid #f3f3f3;
+}
   .Sidemenuitems{
     display: block;
   }

@@ -182,29 +182,22 @@ const Arrow = styled.span`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-
   &::after {
-    content: "";
-    width: 0;
-    height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-
-    border-top: 4px solid #000;
-
-    transform: ${(props) => (props.toggle ? "rotate(180deg)" : "rotate(0deg)")};
+    color:black;
+    content:${props => (props.toggle ? "+" : "-" )}
   }
 `;
 
 const SideBarManu = ({ menus, productMenuData }) => {
   const [activeMenus, setActiveMenus] = useState([]);
 
-  const handleMenuClick = (data) => {
-    console.log(data);
-  };
+  // const handleMenuClick = (data) => {
+  //   console.log(data);
+  // };
 
   const handleArrowClick = (menuName) => {
     let newActiveMenus = [...activeMenus];
+    console.log("activeMenus ", menuName);
 
     if (newActiveMenus.includes(menuName)) {
       var index = newActiveMenus.indexOf(menuName);
@@ -221,8 +214,8 @@ const SideBarManu = ({ menus, productMenuData }) => {
   const ListMenu = ({ dept, data, hasSubMenu, menuName, menuIndex }) => (
     <LI>
       <Item dept={dept}>
-        <Label onClick={() => handleMenuClick(data)}>{data.name} </Label>
-        {console.log("hasSubMenu", hasSubMenu)}
+        <Label onClick={() => handleArrowClick(menuName)}>{data.name} </Label>
+       {console.log("hasSubMenu",hasSubMenu)}
         {hasSubMenu && (
           <Arrow
             onClick={() => handleArrowClick(menuName)}
@@ -240,14 +233,13 @@ const SideBarManu = ({ menus, productMenuData }) => {
       )}
     </LI>
   );
+  
 
   const SubMenu = ({ dept, data, toggle, menuIndex }) => {
     if (!toggle) {
       return null;
     }
-
-    dept = dept + 1;
-
+    dept = dept +1;  
     return (
       <UL>
         {data.map((menu, index) => {
@@ -264,6 +256,8 @@ const SideBarManu = ({ menus, productMenuData }) => {
             />
           );
         })}
+
+        
       </UL>
     );
   };
@@ -273,6 +267,7 @@ const SideBarManu = ({ menus, productMenuData }) => {
   }
   return (
     <UL>
+      
       {productMenuData.menuProducts ? (
         <>
           {productMenuData.menuProducts.categoryList &&

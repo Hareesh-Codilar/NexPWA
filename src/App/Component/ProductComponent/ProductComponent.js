@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import getSymbolFromCurrency from "currency-symbol-map";
 import { withRouter } from "react-router";
 import ProductDetails from "../ProductDetails/ProductDetails";
+import { connect } from "react-redux";
+import { fetchProducts } from "../../store/actions/ProductionAction";
 
 /*
  * @Class ProductComponent
@@ -9,6 +11,7 @@ import ProductDetails from "../ProductDetails/ProductDetails";
  class ProductComponent extends Component {
   constructor(props) {
     super(props);
+    this.routeChange = this.routeChange.bind(this)
   }
   renderImage = (url, name) => {
     return (
@@ -17,8 +20,11 @@ import ProductDetails from "../ProductDetails/ProductDetails";
       </div>
     );
   };
-  routeChange=()=> {
-    this.props.history.push(`/Product/:ProductId`);
+  routeChange=(id)=> {
+    console.log("id -->>", id);
+    this.props.fetchProducts(id);
+    console.log("details", this.props.products);
+    this.props.history.push(`/Product:/${id}`);
   }
 
   render() {
@@ -45,7 +51,7 @@ import ProductDetails from "../ProductDetails/ProductDetails";
                     <>
                     <div className="ui-container">
                       <div className="four column wide">
-                        <div className="ui link cards"  onClick={this.routeChange}>
+                        <div className="ui link cards"  onClick={ () => this.routeChange(item.id)}>
                           <div className="card">
                             {this.renderImage(url, name)}
                             <div className="content">
@@ -76,4 +82,17 @@ import ProductDetails from "../ProductDetails/ProductDetails";
     );
   }
 }
-export default withRouter(ProductComponent)
+const mapStateToProps = (state) => {
+  return {
+    menuProducts: state.menuProducts,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // fetchMenuProducts: (id) => dispatch(fetchMenuProducts(id)),
+    fetchProducts: (catId) => {
+      dispatch(fetchProducts(catId));
+    },
+  };
+};
+export default withRouter(connect(mapDispatchToProps, mapStateToProps)(ProductComponent))

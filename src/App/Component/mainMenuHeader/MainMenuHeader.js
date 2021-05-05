@@ -138,145 +138,54 @@ class MainMenuHeader extends Component {
       </>
     );
   }
-  // renderSubmenuMobile(menuProductsData, menuPosition) {
-  //   return (
-  //     <>
-  //       {this.state.menuList && (
-  //         <div className="Container">
-  //           <div
-  //             className={`MegaMenuSubLevelContainer ${
-  //               this.state.isVisible ? "visible" : ""
-  //             }`}
-  //           >
-  //             <div className="MenuSubDiv show-menu-2 show-menu-2-0">
-  //               <div
-  //                 className="SecondLevel HasThreeLevels"
-                  
-  //               >
-  //                 <div className="FinalLevelContainer">
-  //                   <div className="MenuThirdLevel show-menu-3 show-menu-3-1 active">
-  //                     <div className="ThirdLevel">
-  //                       <div className="MenuThirdLevelList">
-  //                         {this.renderMenuListMobile(menuProductsData, menuPosition)}
-  //                       </div>
-  //                     </div>
-  //                   </div>
-  //                 </div>
-  //               </div>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       )}
-  //     </>
-  //   );
-  // }
-  // renderMenuListMobile(menuProductsData, menuPosition) {
-  //   {
-  //     return (
-  //       <>
-  //         <div className="MenuThirdLevelSubList">
-  //           <ul>
-  //             {menuProductsData &&
-  //               menuProductsData.menuProducts.categoryList[0].children
-                  
-  //                 .children
-  //                 .map((item) => (
-  //                   <>
-  //                     <li
-  //                       className="ListItem Level-3 Level-3-0 main-menu-column active"
-  //                       key={item.id}
-  //                     >
-  //                       <a className="parent">
-  //                         <span
-  //                           className="span-3"
-  //                           onClick={() => this.menuClickhandler(item.id)}
-  //                         >
-  //                           {item.name}
-  //                         </span>
-  //                       </a>
-  //                     </li>
 
-  //                     {item.children.length > 0
-  //                       ? this.renderNestedSubmenuMobile(item.children)
-  //                       : null}
-  //                   </>
-  //                 ))}
-  //           </ul>
-  //         </div>
-  //       </>
-  //     );
-  //   }
-  // }
-  // renderNestedSubmenuMobile(nestedSubmenuData) {
-  //   return (
-  //     <>
-  //       {nestedSubmenuData
-
-  //         .map((item) => (
-  //           <>
-  //             <li className="ListItem Level-4 Level-4-0 main-menu-column">
-  //               <a className="child">
-  //                 <span
-  //                   className="span-4"
-  //                   onClick={() => this.menuClickhandler(item.id)}
-  //                 >
-  //                   {item.name}
-  //                 </span>
-  //               </a>
-  //             </li>
-  //           </>
-  //         ))}
-  //     </>
-  //   );
-  // }
   render() {
     const { menuProductsData, menuPosition } = this.state;
     console.log("Menu data--->>>", menuProductsData);
     return (
       <>
-      <div className="mainMenu-Header">
-        {menuProductsData.menuProducts ? (
-          <>
-            {menuProductsData.menuProducts.categoryList &&
-            menuProductsData.menuProducts.categoryList.length > 0 ? (
-              <>
-                <ul className="MenuList">
-                  {menuProductsData.menuProducts.categoryList[0].children
-                    .sort((a, b) => a.position - b.position)
-                    .map((value, index) => {
-                      return (
-                        <>
-                          <li
-                            className="ListItem Level-2 Level-2-0 arrow"
-                            onClick={() => this.menuClickhandler(value.id)}
-                          >
-                            <span
-                              className="span-2"
-                              onMouseEnter={() =>
-                                this.toggleHidden(value.position)
-                              }
+        <div className="mainMenu-Header">
+          {menuProductsData.menuProducts ? (
+            <>
+              {menuProductsData.menuProducts.categoryList &&
+              menuProductsData.menuProducts.categoryList.length > 0 ? (
+                <>
+                  <ul className="MenuList">
+                    {menuProductsData.menuProducts.categoryList[0].children
+                      .sort((a, b) => a.position - b.position)
+                      .map((value, index) => {
+                        return (
+                          <>
+                            <li
+                              className="ListItem Level-2 Level-2-0 arrow"
+                              onClick={() => this.menuClickhandler(value.id)}
                             >
-                              {" "}
-                              {value.name}
-                            </span>
-                           
-                          </li>
-                          {this.renderSubmenu(menuProductsData, menuPosition)}
-                        </>
-                      );
-                    })}
-                </ul>
-              </>
-            ) : (
-              <> loading...</>
-            )}
-          </>
-        ) : (
-          <> No Data</>
-        )}
-      </div>
-      
-  </>  );
+                              <span
+                                className="span-2"
+                                onMouseEnter={() =>
+                                  this.toggleHidden(value.position)
+                                }
+                              >
+                                {" "}
+                                {value.name}
+                              </span>
+                            </li>
+                            {this.renderSubmenu(menuProductsData, menuPosition)}
+                          </>
+                        );
+                      })}
+                  </ul>
+                </>
+              ) : (
+                <> loading...</>
+              )}
+            </>
+          ) : (
+            <> No Data</>
+          )}
+        </div>
+      </>
+    );
   }
 }
 const mapStateToProps = (state) => {
