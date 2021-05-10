@@ -1,8 +1,174 @@
-.product-Detail-page{
-    margin-top: 190px;
+.product-Detail-page {
+  margin-top: 190px;
 }
 @media screen and (max-width: 500px) {
-    .product-Detail-page {
-        margin-top: 50px;
-      }
+  .product-Detail-page {
+    margin-top: 50px;
+  }
+}
+.card-action {
+    max-width: 580px;
+    margin: auto;
+    border: none;
+    height: 300px;
+    text-align: left;
+    font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+  margin: 0px;
+}
+
+.card-action .add-to-card {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: rgb(231, 81, 164);
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+button.pluseIcon-inproductdetials {
+  margin: 0;
+  width: 35px;
+  height: 34px;
+}
+.add-to-card:hover {
+  color: rgb(218, 56, 137);
+  background-color: rgb(61, 60, 60);
+}
+.ProductActions-Section_type_name {
+    flex-direction: column;
+    text-align: left;
+    padding-bottom: 0;
+}
+.ProductActions-Title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 3rem;
+}
+.ProductActions-Section_type_sku {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #adadad;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.product-main-content {
+    display: flex;
+    align-items: center;
+}
+p.addtocard {
+    margin: 0px;
+}
+.Field.Field_type_number.ProductActions-Qty {
+  display: flex;
+  border: 1px solid;
+  width: 80px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+span.count-span {
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 18px;
+    margin-left: 5px;
+}
+.ProductActions-Attributes {
+    --product-configurable-attributes-margin: 0 2rem 0 0;
+    --option-margin: 0 1rem 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    padding: 1.5rem calc(1rem - 5px);
+}
+.ExpandableContent:first-of-type {
+    border-top: 0;
+}
+.ProductConfigurableAttributes-ExpandableContentButton {
+    min-height: 30px;
+}
+.ExpandableContent-Heading {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: none;
+}
+.ExpandableContent-Button {
+    text-align: left;
+    background-color: white;
+    width: 100%;
+   border: none;
+}
+.ProductActions-Attributes {
+    margin: 0 1rem 1rem 0;
+}
+    /* --option-margin: 0 1rem 1rem 0; */
+.ExpandableContent-SubHeading {
+    font-weight: 300;
+    font-size: .8rem;
+    line-height: 1.1;
+}
+.ExpandableContent-Content {
+    margin-top: 1rem;
+}
+.ProductConfigurableAttributes-SwatchList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.ProductAttributeValue {
+    background: initial;
+    color: initial;
+    padding: 0;
+    /* margin-left: 0; */
+}
+.ProductAttributeValue-String, .ProductAttributeValue-Text {
+    border-style: solid;
+    line-height: 35px;;
+    min-width: calc(1.25*35px);
+    width: auto;
+    text-align: center;
+}
+span.ProductAttributeValue-String {
+    padding: 5px;
+    border: 1px solid darkgray;
+    margin-left: 11px;
+}
+
+button.pluseIcon-inproductdetials {
+    margin: 0;
+    width: 11px;
+    color: black;
+    border: none;
+    margin-left: 45px;
+    background-color: white;
+    /* background-color: black; */
+    height: 22px;
+  /* border-right: none; */
+}
+
+input#item_qty {
+  width: 80px;
+  height: 40px;
+  border: none;
+  background-color: #ffff;
+  /* padding: 11px 0px 11px 20px; */
+}
+
+button.minusIcon-inproductdetials {
+    width: 11px;
+    position: relative;
+    border: none;
+    right: 12px;
+    color: black;
+    background-color: white;
+    height: 22px;
+    margin-top: 17px;
 }

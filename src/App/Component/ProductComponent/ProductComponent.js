@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import getSymbolFromCurrency from "currency-symbol-map";
 import { withRouter } from "react-router";
-import ProductDetails from "../ProductDetails/ProductDetails";
 import { connect } from "react-redux";
-import { fetchProducts } from "../../store/actions/ProductionAction";
+import { fetchproductDetails } from "../../store/actions/productDetailAction";
+
 
 /*
  * @Class ProductComponent
@@ -11,6 +11,9 @@ import { fetchProducts } from "../../store/actions/ProductionAction";
  class ProductComponent extends Component {
   constructor(props) {
     super(props);
+    this.state={
+      productDetailData:[],
+    }
     this.routeChange = this.routeChange.bind(this)
   }
   renderImage = (url, name) => {
@@ -20,15 +23,21 @@ import { fetchProducts } from "../../store/actions/ProductionAction";
       </div>
     );
   };
-  routeChange=(id)=> {
-    console.log("id -->>", id);
-    this.props.fetchProducts(id);
-    console.log("details", this.props.products);
-    this.props.history.push(`/Product:/${id}`);
+  componentDidMount() {
+    console.log("lable", this.props.match.params.ProductId);
+    console.log("lable didid", this.props.productDetail);
+    this.setState({ productDetailData: this.props.productDetail});
+  }
+  routeChange= (id) => {
+    console.log("id details -->>", id);
+    this.props.fetchproductDetails(id);
+    // console.log("details", this.props);
+    this.props.history.push(`/Product/${id}`);
   }
 
   render() {
     const { products } = this.props.products;
+    // console.log("....",this.props.productDetailData);
     console.log("Child data", products);
     return (
       <div className="main-container">
@@ -84,15 +93,16 @@ import { fetchProducts } from "../../store/actions/ProductionAction";
 }
 const mapStateToProps = (state) => {
   return {
-    menuProducts: state.menuProducts,
+    productDetail: state.productDetail,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    // fetchMenuProducts: (id) => dispatch(fetchMenuProducts(id)),
-    fetchProducts: (catId) => {
-      dispatch(fetchProducts(catId));
+    fetchproductDetails: (ProductId) => {
+      dispatch(fetchproductDetails(ProductId));
     },
   };
 };
-export default withRouter(connect(mapDispatchToProps, mapStateToProps)(ProductComponent))
+
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(ProductComponent))

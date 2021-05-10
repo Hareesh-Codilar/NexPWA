@@ -170,12 +170,16 @@ const Item = styled.div`
   padding-left: ${(props) => `${props.dept * 18}px`};
   align-items: center;
 `;
-const Label = styled.span`
+const Label = styled.span.attrs({
+  className: "menu-name"
+})`
   width: 100%;
   display: block;
   cursor: pointer;
 `;
-const Arrow = styled.span`
+const Arrow = styled.span.attrs({
+  className: "icon-pluse"
+})`
   display: flex;
   height: 25px;
   width: 35px;
@@ -183,17 +187,17 @@ const Arrow = styled.span`
   align-items: center;
   cursor: pointer;
   &::after {
-    color:black;
-    content:${props => (props.toggle ? "+" : "-" )}
+    content:"+";
   }
 `;
 
 const SideBarManu = ({ menus, productMenuData }) => {
   const [activeMenus, setActiveMenus] = useState([]);
 
-  // const handleMenuClick = (data) => {
-  //   console.log(data);
-  // };
+  const handleMenuClick = (data) => {
+    console.log(data);
+  };
+
 
   const handleArrowClick = (menuName) => {
     let newActiveMenus = [...activeMenus];

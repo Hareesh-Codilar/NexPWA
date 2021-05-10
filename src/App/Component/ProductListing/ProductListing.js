@@ -24,7 +24,7 @@ class ProductListing extends Component {
     if (prevProps.products !== this.props.products) {
       this.setState({ productData: this.props.products });
     }
-    console.log("Both menu and products", this.state);
+    // console.log("Both menu and products", this.state);
   }
 
   render() {
